@@ -1,0 +1,16 @@
+{
+    "name": "tonyapps/module-b2b-requisition-lists",
+    "description": "Shared company requisition lists for Tonyapps B2B accounts.",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "require": {
+        "php": "~8.3.0||~8.4.0",
+        "magento/framework": "*",
+        "magento/module-catalog": "*",
+        "magento/module-checkout": "*",
+        "tonyapps/module-b2b": "*",
+        "tonyapps/module-b2b-quick-order": "*"
+    },
+    "version": "0.1.0",
+    "autoload": {"files": ["registration.php"], "psr-4": {"Tonyapps\\B2bRequisitionLists\\": ""}}
+}

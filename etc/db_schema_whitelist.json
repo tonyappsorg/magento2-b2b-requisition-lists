@@ -1,0 +1,12 @@
+{
+    "tonyapps_b2b_requisition_list": {
+        "column": {"company_id": true, "created_at": true, "created_by_customer_id": true, "entity_id": true, "name": true, "updated_at": true},
+        "index": {"TONYAPPS_B2B_REQ_LIST_COMPANY": true},
+        "constraint": {"PRIMARY": true, "TONYAPPS_B2B_REQ_LIST_COMPANY_ID_COMPANY_ENTITY_ID": true, "TONYAPPS_B2B_REQ_LIST_COMPANY_NAME": true, "TONYAPPS_B2B_REQ_LIST_CREATOR_CUSTOMER_ID_CUSTOMER_ENTITY_ID": true}
+    },
+    "tonyapps_b2b_requisition_list_item": {
+        "column": {"entity_id": true, "list_id": true, "qty": true, "sku": true},
+        "index": {"TONYAPPS_B2B_REQ_ITEM_LIST": true},
+        "constraint": {"PRIMARY": true, "TONYAPPS_B2B_REQ_ITEM_LIST_ID_LIST_ID": true, "TONYAPPS_B2B_REQ_ITEM_LIST_SKU": true}
+    }
+}
