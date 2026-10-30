@@ -16,4 +16,13 @@ class LayoutLocationTest extends TestCase
         }
         self::assertDirectoryDoesNotExist($root . '/etc/frontend/layout');
     }
+
+    /** Company lists must never come from the full page cache (it also emptied the session, hiding manage forms). */
+    public function testListPageIsUncachedAndUsesTheAccountLayout(): void
+    {
+        $layout = simplexml_load_file(__DIR__ . '/../../../view/frontend/layout/b2brequisitionlists_list_index.xml');
+
+        self::assertSame('customer_account', (string) $layout->update['handle']);
+        self::assertSame('false', (string) $layout->xpath('//block[@name="tonyapps.b2b.requisitionlists"]')[0]['cacheable']);
+    }
 }

@@ -39,7 +39,12 @@ class AddToCart extends AbstractCompanyAction implements HttpPostActionInterface
         $redirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
         try {
             $list = $this->listRepository->getById((int) $company->getId(), (int) $this->request->getParam('list_id'));
-            $result = $this->quickOrderService->addRows($list['items']);
+            $rows = [];
+            foreach (array_values($list['items']) as $index => $item) {
+                // Number rows as they appear in the list so errors do not all read "Line ?".
+                $rows[] = $item + ['line' => $index + 1];
+            }
+            $result = $this->quickOrderService->addRows($rows);
             if ($result['added'] > 0) {
                 $this->messageManager->addSuccessMessage(__('Added %1 item row(s) from "%2" to your cart.', $result['added'], $list['name']));
             }

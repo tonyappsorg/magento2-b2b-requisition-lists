@@ -19,6 +19,12 @@ Saved, named SKU lists for Tonyapps_B2b company accounts, with an action to add 
 1. **Company lists:** schema, role permissions, customer-account page, list/item create-edit-delete, add-to-cart integration, and focused unit tests.
 2. **Manual verification:** install/upgrade, verify role access across two companies, create/edit/delete a list, and add valid and unavailable SKUs to the cart.
 
+## 2026-10-30 review fixes
+
+- The list page is excluded from the full page cache (cached copies leaked lists between companies and hid the manage forms) and shows the customer account menu.
+- Lists are paginated, 20 per page; items are loaded only for the lists on the current page.
+- Add-to-cart errors name the list row (`Line N`) instead of `Line ?`.
+
 ## Install
 
 Install `tonyapps/module-b2b-requisition-lists` with `tonyapps/module-b2b` and `tonyapps/module-b2b-quick-order`, then run:

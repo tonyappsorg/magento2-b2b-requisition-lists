@@ -45,5 +45,11 @@ $lists = $block->getLists();
             </div>
         </section>
     <?php endforeach; ?>
+    <?php if ($block->getPreviousPageUrl() || $block->getNextPageUrl()): ?>
+        <div class="actions-toolbar">
+            <?php if ($url = $block->getPreviousPageUrl()): ?><a class="action previous" href="<?= $escaper->escapeUrl($url) ?>"><?= $escaper->escapeHtml(__('Previous')) ?></a><?php endif; ?>
+            <?php if ($url = $block->getNextPageUrl()): ?><a class="action next" href="<?= $escaper->escapeUrl($url) ?>"><?= $escaper->escapeHtml(__('Next')) ?></a><?php endif; ?>
+        </div>
+    <?php endif; ?>
     <?php if (!$lists): ?><div class="message info"><div><?= $escaper->escapeHtml(__('There are no requisition lists for your company yet.')) ?></div></div><?php endif; ?>
 </div>

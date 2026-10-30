@@ -12,8 +12,12 @@ class RequisitionListRepository
     {
     }
 
-    /** @return array<int, array<string, mixed>> */
-    public function getForCompany(int $companyId): array
+    /**
+     * Lists with their items; items are loaded only for the requested page of lists.
+     *
+     * @return array<int, array<string, mixed>>
+     */
+    public function getForCompany(int $companyId, ?int $limit = null, int $offset = 0): array
     {
         if ($companyId < 1) {
             return [];
@@ -21,9 +25,11 @@ class RequisitionListRepository
         $connection = $this->resource->getConnection();
         $listsTable = $this->resource->getTableName('tonyapps_b2b_requisition_list');
         $itemsTable = $this->resource->getTableName('tonyapps_b2b_requisition_list_item');
-        $lists = $connection->fetchAll(
-            $connection->select()->from($listsTable)->where('company_id = ?', $companyId)->order('name ASC')->order('entity_id ASC')
-        );
+        $select = $connection->select()->from($listsTable)->where('company_id = ?', $companyId)->order('name ASC')->order('entity_id ASC');
+        if ($limit !== null) {
+            $select->limit($limit, max(0, $offset));
+        }
+        $lists = $connection->fetchAll($select);
         if (!$lists) {
             return [];
         }
