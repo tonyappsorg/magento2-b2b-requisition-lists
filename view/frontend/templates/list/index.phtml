@@ -21,22 +21,23 @@ $lists = $block->getLists();
         <section class="block block-requisition-list">
             <div class="block-title"><strong><?= $escaper->escapeHtml($list['name']) ?></strong></div>
             <?php if ($canManage): ?>
-                <form action="<?= $escaper->escapeUrl($block->getUrl('b2brequisitionlists/list/save')) ?>" method="post">
+                <form id="requisition-list-<?= (int) $list['entity_id'] ?>" action="<?= $escaper->escapeUrl($block->getUrl('b2brequisitionlists/list/save')) ?>" method="post">
                     <?= $block->getBlockHtml('formkey') ?>
                     <input type="hidden" name="list_id" value="<?= (int) $list['entity_id'] ?>"/>
                     <div class="field required"><label class="label"><span><?= $escaper->escapeHtml(__('List Name')) ?></span></label><div class="control"><input class="input-text" type="text" name="name" maxlength="100" value="<?= $escaper->escapeHtmlAttr($list['name']) ?>" required/></div></div>
                     <div class="field"><label class="label"><span><?= $escaper->escapeHtml(__('SKUs and Quantities')) ?></span></label><div class="control"><textarea name="items" rows="4"><?php foreach ($list['items'] as $item): ?><?= $escaper->escapeHtml($item['sku'] . ', ' . $item['qty']) ?>&#10;<?php endforeach; ?></textarea></div></div>
-                    <button type="submit" class="action primary"><span><?= $escaper->escapeHtml(__('Save Changes')) ?></span></button>
                 </form>
             <?php else: ?>
                 <ul><?php foreach ($list['items'] as $item): ?><li><?= $escaper->escapeHtml($item['sku']) ?> × <?= $escaper->escapeHtml((string) $item['qty']) ?></li><?php endforeach; ?></ul>
             <?php endif; ?>
-            <div class="actions-toolbar">
+            <div class="actions-toolbar requisition-list-actions">
                 <form action="<?= $escaper->escapeUrl($block->getUrl('b2brequisitionlists/list/addToCart')) ?>" method="post">
                     <?= $block->getBlockHtml('formkey') ?><input type="hidden" name="list_id" value="<?= (int) $list['entity_id'] ?>"/>
                     <button type="submit" class="action primary"><span><?= $escaper->escapeHtml(__('Add List to Cart')) ?></span></button>
                 </form>
                 <?php if ($canManage): ?>
+                    <?php /* Submits the edit form above (HTML form attribute), so all list actions sit in one row. */ ?>
+                    <button type="submit" form="requisition-list-<?= (int) $list['entity_id'] ?>" class="action secondary save"><span><?= $escaper->escapeHtml(__('Save Changes')) ?></span></button>
                     <?php /* Core's data-post widget asks for confirmation, then posts with the form key. */ ?>
                     <button type="button" class="action secondary delete" data-post="<?= $escaper->escapeHtmlAttr(json_encode([
                         'action' => $block->getUrl('b2brequisitionlists/list/delete'),

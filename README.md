@@ -49,3 +49,6 @@ vendor/bin/phpunit -c dev/tests/integration/phpunit.xml.dist app/code/Tonyapps/B
 
 **Delete List** asks for confirmation first (core's `data-post` confirm modal, which then posts with the form key),
 since a list is shared with the whole company.
+
+The list actions sit in one row: **Add List to Cart**, **Save Changes** (it submits the list's edit form through the
+HTML `form` attribute) and **Delete List** on the right (`view/frontend/web/css/source/_module.less`).
