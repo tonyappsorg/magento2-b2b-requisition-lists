@@ -44,3 +44,8 @@ The repository scope test uses Magento's integration test configuration:
 ```sh
 vendor/bin/phpunit -c dev/tests/integration/phpunit.xml.dist app/code/Tonyapps/B2bRequisitionLists/Test/Integration
 ```
+
+## 2026-11-09 QA fix
+
+**Delete List** asks for confirmation first (core's `data-post` confirm modal, which then posts with the form key),
+since a list is shared with the whole company.

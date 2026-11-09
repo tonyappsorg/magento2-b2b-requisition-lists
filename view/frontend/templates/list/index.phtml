@@ -37,10 +37,15 @@ $lists = $block->getLists();
                     <button type="submit" class="action primary"><span><?= $escaper->escapeHtml(__('Add List to Cart')) ?></span></button>
                 </form>
                 <?php if ($canManage): ?>
-                    <form action="<?= $escaper->escapeUrl($block->getUrl('b2brequisitionlists/list/delete')) ?>" method="post">
-                        <?= $block->getBlockHtml('formkey') ?><input type="hidden" name="list_id" value="<?= (int) $list['entity_id'] ?>"/>
-                        <button type="submit" class="action secondary"><span><?= $escaper->escapeHtml(__('Delete List')) ?></span></button>
-                    </form>
+                    <?php /* Core's data-post widget asks for confirmation, then posts with the form key. */ ?>
+                    <button type="button" class="action secondary delete" data-post="<?= $escaper->escapeHtmlAttr(json_encode([
+                        'action' => $block->getUrl('b2brequisitionlists/list/delete'),
+                        'data' => [
+                            'list_id' => (int) $list['entity_id'],
+                            'confirmation' => true,
+                            'confirmationMessage' => (string) __('Delete the requisition list "%1"? It is removed for everyone in your company.', $list['name']),
+                        ],
+                    ])) ?>"><span><?= $escaper->escapeHtml(__('Delete List')) ?></span></button>
                 <?php endif; ?>
             </div>
         </section>
