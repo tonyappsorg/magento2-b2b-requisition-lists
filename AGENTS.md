@@ -6,7 +6,7 @@ Read this before changing the module. Workspace-wide rules are in ../AGENTS.md. 
 ## Status
 
 - WORKPLAN shortlist #3 (quick win): **built, manual QA pending** on staging (`tonyapps/module-b2b-requisition-lists`
-  v0.1.0, GPL-3.0-or-later). Saved, named SKU lists for Tonyapps_B2b company accounts, with an action to add the list to
+  v1.0.0, GPL-3.0-or-later). Saved, named SKU lists for Tonyapps_B2b company accounts, with an action to add the list to
   the normal cart. Magento Open Source has no reusable company requisition-list feature (Commerce-only).
 - Phases:
   1. **Company lists** — ✅ schema, role permissions, customer-account page, list/item create-edit-delete,

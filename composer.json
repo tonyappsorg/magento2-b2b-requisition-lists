@@ -11,6 +11,5 @@
         "tonyapps/module-b2b": "*",
         "tonyapps/module-b2b-quick-order": "*"
     },
-    "version": "0.1.0",
     "autoload": {"files": ["registration.php"], "psr-4": {"Tonyapps\\B2bRequisitionLists\\": ""}}
 }
