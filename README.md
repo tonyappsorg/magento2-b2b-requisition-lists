@@ -37,6 +37,7 @@ lists and add them to the cart but not change them.
 - Up to 500 rows per list and up to 10,000 units per SKU; repeated SKUs in a list are merged.
 - Lists are not shared between parent and child companies.
 - Not included: attaching a list to a quote, approval of lists, or turning a list into a purchase order.
+- The Requisition Lists account page supports Luma and Hyvä storefronts.
 
 ## Requirements
 

@@ -6,7 +6,7 @@ Read this before changing the module. Workspace-wide rules are in ../AGENTS.md. 
 ## Status
 
 - WORKPLAN shortlist #3 (quick win): **built, manual QA pending** on staging (`tonyapps/module-b2b-requisition-lists`
-  v1.0.0, GPL-3.0-or-later). Saved, named SKU lists for Tonyapps_B2b company accounts, with an action to add the list to
+  v1.0.1, GPL-3.0-or-later). Saved, named SKU lists for Tonyapps_B2b company accounts, with an action to add the list to
   the normal cart. Magento Open Source has no reusable company requisition-list feature (Commerce-only).
 - Phases:
   1. **Company lists** — ✅ schema, role permissions, customer-account page, list/item create-edit-delete,
@@ -15,6 +15,7 @@ Read this before changing the module. Workspace-wide rules are in ../AGENTS.md. 
      add valid and unavailable SKUs to the cart. Scripted browser flow done 2026-11-09 in DDEV (see Change history);
      staging install + README checklist still pending per WORKPLAN.
 - Integration tests green in DDEV 2026-11-11 (9 tests, see Tests).
+- **Hyvä storefront styling verified 2026-11-17:** list forms and actions use Hyvä controls and buttons.
 
 ## Architecture
 
@@ -91,6 +92,9 @@ vendor/bin/phpunit -c dev/tests/integration/phpunit.xml.dist app/code/Tonyapps/B
 - E2E: `../e2e/tests/b2b-requisition-lists.spec.js`.
 
 ## Change history
+
+- **2026-11-17 — Hyvä storefront styling:** Added Hyvä form and button classes, responsive list tables, and Tailwind
+  source registration. Covered by `../e2e/tests/hyva-b2b-styling.spec.js`.
 
 - **2026-11-16** — Released as free software under GPL-3.0-or-later (owner decision): `LICENSE` added,
   `composer.json` license changed from `proprietary`, License section in the README.
